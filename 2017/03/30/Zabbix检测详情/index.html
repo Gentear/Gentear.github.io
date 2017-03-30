@@ -9,24 +9,18 @@
   <title>Zabbix检测详情 | Gentear</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="内存检测1Template OS Linux:vm.memory.size[available].last(0)&amp;#125;&amp;lt;20M
-服务器可用内存大小（可用内存被定义为空闲+缓存+缓冲区内存。），当前内存小于20M，会进行报警。该报警为一般严重。
-网络连接检测1Template OS Linux:agent.ping.nodata(5m)&amp;#125;=1
-服务器ping后无数据返回1（1为">
+服务器可用内存大小（可用内存被定义为空闲+缓存+缓冲区内存。），当前内存小于20M，会进行报警。该报警为一般严重。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Zabbix检测详情">
 <meta property="og:url" content="http://yoursite.com/2017/03/30/Zabbix检测详情/index.html">
 <meta property="og:site_name" content="Gentear">
 <meta property="og:description" content="内存检测1Template OS Linux:vm.memory.size[available].last(0)&amp;#125;&amp;lt;20M
-服务器可用内存大小（可用内存被定义为空闲+缓存+缓冲区内存。），当前内存小于20M，会进行报警。该报警为一般严重。
-网络连接检测1Template OS Linux:agent.ping.nodata(5m)&amp;#125;=1
-服务器ping后无数据返回1（1为">
-<meta property="og:updated_time" content="2017-03-30T08:29:51.000Z">
+服务器可用内存大小（可用内存被定义为空闲+缓存+缓冲区内存。），当前内存小于20M，会进行报警。该报警为一般严重。">
+<meta property="og:updated_time" content="2017-03-30T08:32:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zabbix检测详情">
 <meta name="twitter:description" content="内存检测1Template OS Linux:vm.memory.size[available].last(0)&amp;#125;&amp;lt;20M
-服务器可用内存大小（可用内存被定义为空闲+缓存+缓冲区内存。），当前内存小于20M，会进行报警。该报警为一般严重。
-网络连接检测1Template OS Linux:agent.ping.nodata(5m)&amp;#125;=1
-服务器ping后无数据返回1（1为">
+服务器可用内存大小（可用内存被定义为空闲+缓存+缓冲区内存。），当前内存小于20M，会进行报警。该报警为一般严重。">
   
   
     <link rel="icon" href="/img/favicon.ico">
@@ -172,6 +166,7 @@ var _hmt = _hmt || [];
       
         <h5 id="内存检测"><a href="#内存检测" class="headerlink" title="内存检测"></a>内存检测</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Template OS Linux:vm.memory.size[available].last(0)&#125;&lt;20M</div></pre></td></tr></table></figure>
 <p>服务器可用内存大小（可用内存被定义为空闲+缓存+缓冲区内存。），当前内存小于20M，会进行报警。该报警为一般严重。</p>
+<a id="more"></a>
 <h5 id="网络连接检测"><a href="#网络连接检测" class="headerlink" title="网络连接检测"></a>网络连接检测</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Template OS Linux:agent.ping.nodata(5m)&#125;=1</div></pre></td></tr></table></figure>
 <p>服务器ping后无数据返回1（1为不可达）。持续5分钟不可达会进行报警。该报警为一般严重。</p>
 <h5 id="磁盘I-O检测"><a href="#磁盘I-O检测" class="headerlink" title="磁盘I/O检测"></a>磁盘I/O检测</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Template OS Linux:system.cpu.util[,iowait].avg(5m)&#125;&gt;20</div></pre></td></tr></table></figure>
