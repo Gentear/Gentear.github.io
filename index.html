@@ -162,38 +162,10 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="视频硬编码"><a href="#视频硬编码" class="headerlink" title="视频硬编码"></a>视频硬编码</h1><p><img src="https://gentear.github.io/media/14908527319123/encode.png" alt="硬编码流程图"></p>
-<h1 id="VideoToolBox（硬编码部分）"><a href="#VideoToolBox（硬编码部分）" class="headerlink" title="VideoToolBox（硬编码部分）"></a>VideoToolBox（硬编码部分）</h1><blockquote>
-<p>VideoToolBox是一个直接通过硬件来提升视频编码和解码能力的框架。也就是我们俗称的硬解码和硬编码</p>
-</blockquote>
-<h2 id="VTCompressionSession-（object）"><a href="#VTCompressionSession-（object）" class="headerlink" title="VTCompressionSession （object）"></a>VTCompressionSession （object）</h2><blockquote>
-<p>一个管理视频数据压缩的会话</p>
-</blockquote>
-<h3 id="VTCompressionSessionCreate-（method）"><a href="#VTCompressionSessionCreate-（method）" class="headerlink" title="VTCompressionSessionCreate （method）"></a>VTCompressionSessionCreate （method）</h3><blockquote>
-<p>创建VTCompressionSession</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">//OSStatus 返回创建的状态</div><div class="line">OSStatus VTCompressionSessionCreate(</div><div class="line">//1. 一个分配器 默认为Null</div><div class="line">CFAllocatorRef allocator, </div><div class="line">//2. 视频帧的像素宽度</div><div class="line">int32_t width, </div><div class="line">//3. 视频帧的像素高度</div><div class="line">int32_t height, </div><div class="line">//4. 编码类型 常用H264编码 kCMVideoCodecType_H264</div><div class="line">CMVideoCodecType codecType, </div><div class="line">//5. 编码方式Null由videoToolBox选择</div><div class="line">CFDictionaryRef encoderSpecification, </div><div class="line">//6. 创建一个像素缓冲池的属性 Null为由videoToolBox创建</div><div class="line">CFDictionaryRef sourceImageBufferAttributes, </div><div class="line">//7. 数据压缩分配器  默认为Null</div><div class="line">CFAllocatorRef compressedDataAllocator, </div><div class="line">//8. 输出回调   VTCompressionSessionEncodeFrame</div><div class="line">VTCompressionOutputCallback outputCallback, </div><div class="line">//9. 回调对象 </div><div class="line">void *outputCallbackRefCon,</div><div class="line">//10. VTCompressionSession 要创建的对象 </div><div class="line">VTCompressionSessionRef  _Nullable *compressionSessionOut);</div></pre></td></tr></table></figure>
-<h3 id="VTSessionSetProperty-amp-amp-VTSessionSetProperties-（method）"><a href="#VTSessionSetProperty-amp-amp-VTSessionSetProperties-（method）" class="headerlink" title="VTSessionSetProperty &amp;&amp; VTSessionSetProperties （method）"></a>VTSessionSetProperty &amp;&amp; VTSessionSetProperties （method）</h3><blockquote>
-<p>设置 VideoToolbox session 属性</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//返回状态</div><div class="line">OSStatus VTSessionSetProperty(</div><div class="line">//VTCompressionSession 设置的session对象</div><div class="line">VTSessionRef session, </div><div class="line">//key值</div><div class="line">CFStringRef propertyKey, </div><div class="line">//value值</div><div class="line">CFTypeRef propertyValue);</div></pre></td></tr></table></figure>
-<blockquote>
-<p>批量设置 VideoToolbox session 属性</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//返回状态</div><div class="line">OSStatus VTSessionSetProperties(</div><div class="line">//VTCompressionSession 设置的session对象</div><div class="line">VTSessionRef session, </div><div class="line">//CFDictionaryRef 字典存储</div><div class="line">CFDictionaryRef propertyDictionary);</div></pre></td></tr></table></figure>
-<h3 id="VTCompressionSessionPrepareToEncodeFrames-（method）"><a href="#VTCompressionSessionPrepareToEncodeFrames-（method）" class="headerlink" title="VTCompressionSessionPrepareToEncodeFrames （method）"></a>VTCompressionSessionPrepareToEncodeFrames （method）</h3><blockquote>
-<p>允许编码器编码开始之前执行任何必要的资源分配框架(可选)。该方法需要在VTCompressionSessionEncodeFrame之前调用</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">OSStatus VTCompressionSessionPrepareToEncodeFrames(VTCompressionSessionRef session);</div></pre></td></tr></table></figure>
-<h3 id="VTCompressionSessionEncodeFrame-（method）"><a href="#VTCompressionSessionEncodeFrame-（method）" class="headerlink" title="VTCompressionSessionEncodeFrame （method）"></a>VTCompressionSessionEncodeFrame （method）</h3><blockquote>
-<p>把会话中的每一帧进行压缩</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">OSStatus VTCompressionSessionEncodeFrame(</div><div class="line">//数据压缩会话</div><div class="line">VTCompressionSessionRef session, </div><div class="line">//一个核心的视频图像缓冲区包含一个视频帧</div><div class="line">CVImageBufferRef imageBuffer, </div><div class="line">//帧的时间戳,时间戳后一个必须大于前一个</div><div class="line">CMTime presentationTimeStamp, </div><div class="line">//这一帧展示的时间 默认kCMTimeInvalid</div><div class="line">CMTime duration, </div><div class="line">//每一帧的属性</div><div class="line">CFDictionaryRef frameProperties, </div><div class="line">//一个回调，可以对每一帧进行处理 不需要处理传Null</div><div class="line">void *sourceFrameRefCon, </div><div class="line">//VTEncodeInfoFlags 设置同步异步处理 0为异步</div><div class="line">VTEncodeInfoFlags *infoFlagsOut);</div></pre></td></tr></table></figure>
-<h3 id="VTCompressionSessionInvalidate-（method）"><a href="#VTCompressionSessionInvalidate-（method）" class="headerlink" title="VTCompressionSessionInvalidate （method）"></a>VTCompressionSessionInvalidate （method）</h3><blockquote>
-<p>废弃VTCompressionSession</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//废弃值</div><div class="line">void VTCompressionSessionInvalidate(VTCompressionSessionRef session);</div><div class="line">//完成后需要进行release</div><div class="line">void CFRelease(CFTypeRef cf);</div><div class="line">//最后将对象置空Null</div><div class="line">session = Null</div></pre></td></tr></table></figure>
-
+        <h1 id="视频硬编码"><a href="#视频硬编码" class="headerlink" title="视频硬编码"></a>视频硬编码</h1><p><img src="https://gentear.github.io/media/14908527319123/encode.png" alt="硬编码流程图"><br>
+        
+          <a class="article-more-a" href="/2018/03/22/视频硬编码/#more">more >></a>
+        
       
 
       
